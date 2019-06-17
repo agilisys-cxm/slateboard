@@ -1,0 +1,30 @@
+<ion-content scroll="false">
+  <div class="splash-bg"></div>
+  <div class="splash-info">
+    <div class="splash-logo"></div>
+    <div class="splash-intro" *ngIf="!venue">
+      {{ 'WELCOME_INTRO' | translate }}
+    </div>
+  </div>
+
+  <div *ngIf="venue">
+    <ion-list>
+      <ion-item>Active venue</ion-item>
+      <ion-item (click)="goTo(venue)">
+        <ion-thumbnail item-start>
+          <img [src]="venue.thumb" alt="{{venue.name}}">
+        </ion-thumbnail>
+        <h2>{{venue.name}}</h2>
+        <p>{{venue.address}}<br/>{{venue.city}}</p>
+        <button ion-button clear item-end>View</button>
+      </ion-item>
+    </ion-list>
+  </div>
+
+
+  <div padding>
+    <button ion-button block (click)="directory()">{{ 'FIND_VENUE' | translate }}</button>
+  </div>
+
+
+</ion-content>

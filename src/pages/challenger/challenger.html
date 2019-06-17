@@ -1,0 +1,37 @@
+<!--
+  Generated template for the ChallengerPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar [color]="isAndroid ? 'royal' : 'primary'">
+    <ion-title>Challenger</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+
+<ion-content>
+  <div class="item-detail" padding>
+    <p><strong>Venue:</strong> {{post.leaderboard.venueModel.name}}</p>
+    <p><strong>Leaderboard:</strong> {{post.leaderboard.name}}</p>
+  </div>
+  <ion-list [virtualScroll]="players">
+    <ion-item>
+      <button ion-button (click)="doRegister()" block>Register</button>
+    </ion-item>
+    <ion-item *virtualItem="let player">
+      <ion-avatar item-start>
+        <img [src]="player.thumb" alt="{{player.name}}">
+      </ion-avatar>
+      <h2>{{player.first}} {{player.last}}</h2>
+      <button ion-button clear item-end (click)="doLogin(player)">Login</button>
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>

@@ -1,0 +1,59 @@
+<!--
+  Generated template for the AccountPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar [color]="isAndroid ? 'royal' : 'primary'">
+    <ion-title>Account</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div padding>
+    <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + 'x' + ')'">
+    </div>
+
+
+    <ion-list *ngIf="!profile.uid">
+      <button ion-button block (click)="signup()" *ngIf="user.loggedIn==false">Sign up</button>
+      <button ion-button block (click)="login()" class="login">Login</button>
+      <!--
+      <button ion-button (click)="load()" block>Load</button>
+      -->
+    </ion-list>
+
+    <div *ngIf="profile.uid">
+      <ion-list>
+        <ion-item>
+          <p>{{profile.name}}</p>
+        </ion-item>
+        <ion-item>
+          <p>{{profile.mail}}</p>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <button ion-button (click)="doLogout()" block>Logout</button>
+      </ion-list>
+    </div>
+  </div>
+
+  <ion-list>
+    <ion-item>
+      <ion-select [(ngModel)]="domain" name="domain">
+        <ion-label>Domain</ion-label>
+        <ion-option value="http://slate-server:8888/" checked="true">Local</ion-option>
+        <ion-option value="http://dev-slate-server.pantheonsite.io/">Live</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <button ion-button (click)="doChangeDomain()" block>Change domain</button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
